@@ -1,0 +1,35 @@
+package es.syp3.aev3;
+
+import java.util.ArrayList;
+
+public class App {
+
+	public static void main(String[] args) {
+		Mina miMina = new Mina(50);
+		Minero soyMineroooo = null;
+		int totalRecolectado=0;
+		ArrayList<Minero> mineros = new ArrayList<Minero>();
+
+		Thread hilo;
+			for (int i = 1; i <= 10; i++) {
+				soyMineroooo = new Minero(miMina);
+				mineros.add(soyMineroooo);
+				hilo = new Thread(soyMineroooo);
+				hilo.setName("Minero " + i);
+				hilo.start();
+			
+			}
+			try {
+				Thread.sleep(40000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			for (int i=0 ; i< mineros.size(); i++) {
+				totalRecolectado = totalRecolectado + mineros.get(i).getBolsa();
+			}
+			System.out.println("Quedan " + miMina.getStock() + " monedas en la mina.");
+			System.out.println("El total de monedas recogidas por los mineros es de: "+totalRecolectado);
+		}
+	//}
+
+}

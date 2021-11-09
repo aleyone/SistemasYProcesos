@@ -1,0 +1,65 @@
+package es.syp3.aev3;
+
+public class Ventilador {
+	int ventilador = 1;
+	int tiempo = 4000;
+
+	public void encenderVentilador() {
+		while (true) {
+			synchronized (this) {
+
+				try {
+					while (ventilador == 2)
+						wait();
+					System.err.print("Ventilador apagado");
+					System.out.println("Ventilador encendido.");
+					Thread.sleep(tiempo);
+					ventilador = 2;
+					notify();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public void apagarVentilador() {
+		while (true) {
+			synchronized (this) {
+
+				try {
+					while (ventilador == 1)
+						wait();
+					System.err.print("Ventilador apagado");
+					System.out.println("Ventilador encendido.");
+					Thread.sleep(tiempo);
+					ventilador = 1;
+					notify();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+//	public static void main(String[] args) {
+//		ControlSemaforos control = new ControlSemaforos();
+//		
+//		Thread semaforo1 = new Thread(new Runnable() {
+//		public void run() {
+//			control.encenderSemaforo1();
+//		}
+//		});
+//		
+//		Thread semaforo2 = new Thread(new Runnable() {
+//		public void run() {
+//			control.encenderSemaforo2();
+//		}
+//		});
+//		
+//		semaforo1.start();
+//		semaforo2.start();
+//
+//	}
+
+}
