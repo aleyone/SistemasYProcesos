@@ -2,7 +2,7 @@ package es.syp3.aev3;
 
 public class Ventilador {
 	int ventilador = 1;
-	int tiempo = 2000;
+	int tiempo = 4000;
 
 	/**
 	 * métodos para encender y apagar el ventilador

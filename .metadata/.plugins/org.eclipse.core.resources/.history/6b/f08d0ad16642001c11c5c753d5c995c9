@@ -2,7 +2,7 @@ package es.syp3.aev3;
 
 public class Ventilador {
 	int ventilador = 1;
-	int tiempo = 2000;
+	int tiempo = 4000;
 
 	/**
 	 * métodos para encender y apagar el ventilador
@@ -15,6 +15,7 @@ public class Ventilador {
 					while (ventilador == 2)
 						wait();
 					System.out.println("------ Ventilador encendido\n");
+					System.err.println("------ Ventilador apagadp.\n");
 					Thread.sleep(tiempo);
 					ventilador = 2;
 					notify();
@@ -32,6 +33,7 @@ public class Ventilador {
 				try {
 					while (ventilador == 1)
 						wait();
+					System.out.println("------- Ventilador encendido\n");
 					System.err.println("------- Ventilador apagado.\n");
 					Thread.sleep(tiempo);
 					ventilador = 1;

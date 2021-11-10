@@ -7,11 +7,11 @@ public class Mina {
 		this.stock = stock;
 	}
 
-	synchronized public void setStock(int stock) {
+	public void setStock(int stock) {
 		this.stock = stock;
 	}
 
-	synchronized public int getStock() {
+	public int getStock() {
 		return this.stock;
 	}
 }
