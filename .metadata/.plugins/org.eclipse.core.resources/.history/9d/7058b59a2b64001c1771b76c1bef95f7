@@ -1,0 +1,52 @@
+package es.syp4.ae4;
+
+public class Password {
+	String textPass, encryptedPass;
+	
+	
+	public Password() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Password(String text) {
+		this.textPass=text;
+		
+	}
+
+
+	public String getTextPass() {
+		return textPass;
+	}
+
+
+	public void setTextPass(String textPass) {
+		this.textPass = textPass;
+	}
+
+
+	public String getEncryptedPass() {
+		return encryptedPass;
+	}
+
+
+	public void setEncryptedPass(String encryptedPass) {
+		this.encryptedPass = encryptedPass;
+	}
+	
+	public String AsciiEnc(String textPass) {
+		String encrypted="";
+		
+		
+		return encrypted;
+	}
+	
+	public String MD5Enc(String textPass) {
+		String encrypted="";
+		
+		
+		return encrypted;
+	}
+
+}

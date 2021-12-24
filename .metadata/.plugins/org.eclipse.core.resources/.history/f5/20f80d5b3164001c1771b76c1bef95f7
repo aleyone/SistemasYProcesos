@@ -1,0 +1,57 @@
+package es.syp4.ae4;
+
+import java.io.Serializable;
+
+public class Password implements Serializable{
+	String textPass, encryptedPass;
+	private static final long serialVersionUID = 1L;
+
+	public Password(String text) {
+		this.textPass=text;
+		
+	}
+
+
+	public String getTextPass() {
+		return textPass;
+	}
+
+
+	public void setTextPass(String textPass) {
+		this.textPass = textPass;
+	}
+
+
+	public String getEncryptedPass() {
+		return encryptedPass;
+	}
+
+
+	public void setEncryptedPass(String encryptedPass) {
+		this.encryptedPass = encryptedPass;
+	}
+	
+	public void AsciiEnc(String textPass) {
+		String encrypted="";
+		int asciiValue, asciiNew;
+		char convertToText;
+		char[] chars = textPass.toCharArray();
+		for (int i=0; i<chars.length;i++) {
+			asciiValue= (int) chars[i];
+			asciiNew = asciiValue+1;
+			if (asciiNew )
+			convertToText = (char) asciiNew;
+			encrypted+=convertToText;			
+		}
+		
+		setEncryptedPass(encrypted);
+	}
+	
+	public void MD5Enc(String textPass) {
+		String encrypted="";
+		
+		
+		setEncryptedPass(encrypted);
+	}
+
+}

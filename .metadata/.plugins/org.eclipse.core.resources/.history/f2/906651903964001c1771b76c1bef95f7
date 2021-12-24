@@ -1,0 +1,54 @@
+package es.syp4.ae4;
+
+import java.io.IOException;
+import java.net.UnknownHostException;
+
+public class Client {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner (System.in);
+		System.out.print("Introduce IP: ");
+		String ip = teclado.nextLine();
+		System.out.print("Introduce puerto: ");
+		int port=Integer.parseInt(teclado.nextLine());
+		System.out.print("CLIENTE >> Waiting server...");
+		try {
+			Socket cliente = new Socket (ip, port);
+			ObjectInputStream inObject = new ObjectInputStream(cliente.getInputStream());
+			Figura figura = (Figura) inObject.readObject();
+			System.out.println("CLIENTE >> Receiving from server... >> "+figura.getClase()+" - "+figura.getColor()+" - "+figura.getLados());
+			System.out.println("CLIENTE >> Updating object...");
+			System.out.print("Introduce tipo de figura: ");
+			String tipo = teclado.nextLine();
+			System.out.print("Introduce color de la figura: ");
+			String color = teclado.nextLine();
+			System.out.print("Introduce lados de la figura: ");
+			int lados = Integer.parseInt(teclado.nextLine());
+			figura.setClase(tipo);
+			figura.setColor(color);
+			figura.setLados(lados);
+			Thread.sleep(3000);
+			System.out.print("CLIENTE >> Sending update object to server... >> "+figura.getClase()+" - "+figura.getColor()+" - "+figura.getLados());
+			ObjectOutputStream outObject = new ObjectOutputStream(cliente.getOutputStream());
+			outObject.writeObject(figura);
+			inObject.close();
+			outObject.close();
+			cliente.close();
+			teclado.close();			
+			
+			
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+
+
